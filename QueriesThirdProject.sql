@@ -40,7 +40,9 @@ select G.id_user as Player, M.try as Intentos
 from words M 
 join hangman H on H.id_hangman =M.id_word
 join games G on G.id_game = H.id_game
-join users_player U on U.id_user = G.id_user where M.try = 1;
+join users_player U on U.id_user = G.id_user
+join hangman_stats HS on HS.id_hangman = H.id_hangman
+where M.try = 1 and HS.won =1;
 
 
 
