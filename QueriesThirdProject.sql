@@ -36,5 +36,11 @@ where e.r <=3 group by e.id_user, e.won;
 /** Top 3 de los mejores jugadores ttt **/
 
 /** Jugador de Hangman con menos intentos al ganar**/
+select G.id_user as Player, M.try as Intentos
+from words M 
+join hangman H on H.id_hangman =M.id_word
+join games G on G.id_game = H.id_game
+join users_player U on U.id_user = G.id_user where M.try = 1;
+
 
 
