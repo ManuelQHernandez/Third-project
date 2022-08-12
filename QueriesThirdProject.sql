@@ -21,3 +21,20 @@ group by usp.name;
 
 
 /**Top 3 de los peores jugadores (partidas perdidas)**/
+select e.id_user, count(e.lost) as Lost from (
+select id_user, lost, row_number() over(order by lost) r from Hangman_stats where lost = 1)e
+where e.r <=3 group by e.id_user, e.lost;
+
+
+/** Top 3 de los mejores jugadores (partidas ganadas) **/
+select e.id_user, count(e.won) as Won
+from (select id_user, won, row_number() over(order by won) r from Hangman_stats where won = 1)e
+where e.r <=3 group by e.id_user, e.won;
+
+/** Top 3 de los mejores jugadores hangman **/
+
+/** Top 3 de los mejores jugadores ttt **/
+
+/** Jugador de Hangman con menos intentos al ganar**/
+
+
